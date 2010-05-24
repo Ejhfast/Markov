@@ -36,20 +36,24 @@ def weighted_choice(arry)
 	selected
 end
 
-#select initial word randomly
-sz = pairs.size - 1
-sel = rand(sz)
-current = pairs[sel].first
+def run(pairs)
+	#select initial word randomly
+	sz = pairs.size - 1
+	sel = rand(sz)
+	current = pairs[sel].first
 
 
-#iterate over a sentence
-outp = current + " "
-while current[current.size-1] != "." do
-	gd = (lookup current, pairs)
-	current = weighted_choice gd
-	outp = outp + current + " "
+	#iterate over a sentence
+	outp = current + " "
+	while current[current.size-1] != "." do
+		gd = (lookup current, pairs)
+		current = weighted_choice gd
+		outp = outp + current + " "
+	end
+	puts
+	puts outp
 end
-puts
-puts outp
+
+(0..100).each {run pairs}
 
 	
